@@ -43,7 +43,7 @@ tr:nth-child(even) {
   {% for post in site.posts %}
    <tr>
     <td> <a href="{{ post.url }}">{{ post.title }}</a><BR>
-    {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}</td>
+    {{ post.location}}, {{ post.host}}, {{ post.dates }}</td>
   </tr>  
   {% endfor %}
   
