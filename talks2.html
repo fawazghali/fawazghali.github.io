@@ -1,0 +1,57 @@
+---
+layout: default
+title: Talks
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFJ1ZHGZYC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XFJ1ZHGZYC');
+</script>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+  
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+  
+</head>
+<body>
+
+
+
+<table>
+
+  {% for file in site.talks %}
+   <tr>
+    <td> <a href="{{ file[0] }}">{{ file[0] }}</a><BR></td>
+  </tr>  
+  {% endfor %}
+  
+</table>
+
+</body>
+</html>
+
+
+
+
+
