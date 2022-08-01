@@ -13,6 +13,7 @@ future: true
 navbar-links:
   Home: "https://fawazghali.com"
   Talks: "talks"
+  Talks2 : "talks2"
   Photos: "photos"
   Tags: "twitter"
   About: "aboutme"
