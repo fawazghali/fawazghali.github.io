@@ -15,222 +15,44 @@ title: Photos
 
   gtag('config', 'G-XFJ1ZHGZYC');
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-
-  
-  body {
-  font-family: Arial;
-  margin: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-img {
-  vertical-align: middle;
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-  
-</style>
+<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
   
 </head>
 <body>
-
-  
-
-<div class="container">
-  <div class="mySlides">
-    <img src="/images/istanbulcoders01.jpg" style="width:100%">
-  </div>
-
-  <div class="mySlides">
-    <img src="/images/istanbulcoders02.jpeg" style="width:100%">
-  </div>
-
-  <div class="mySlides">
-    <img src="/images/istanbulcoders03.jpeg" style="width:100%">
-  </div>
-    
-  <div class="mySlides">
-    <img src="/images/dotnetliverpool01.jpg" style="width:100%">
-  </div>
-
-  <div class="mySlides">
-    <img src="/images/dotnetliverpool02.jpg" style="width:100%">
-  </div>
-      </div>
-     <div class="mySlides">
-    <img src="/images/dotnetliverpool03.jpg" style="width:100%">
-  </div>
-  <div class="mySlides">
-    <img src="/images/ljc01.jpg" style="width:100%">
-  </div>
- <div class="mySlides">
-    <img src="/images/ljc02.jpg" style="width:100%">
-  </div>
-     <div class="mySlides">
-    <img src="/images/ljc03.jpg" style="width:100%">
-  </div>
-     <div class="mySlides">
-    <img src="/images/ljc04.jpg" style="width:100%">
-    </div>
-    
-  <a class="prev" onclick="plusSlides(-1)">❮</a>
-  <a class="next" onclick="plusSlides(1)">❯</a>
-
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
-
-  <div class="row">
-    <div class="column">
-      <img class="demo cursor" src="/images/istanbulcoders01.jpg" style="width:100%" onclick="currentSlide(1)" alt="Istanbul Coders">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="/images/istanbulcoders02.jpeg" style="width:100%" onclick="currentSlide(2)" alt="Istanbul Coders">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="/images/istanbulcoders03.jpeg" style="width:100%" onclick="currentSlide(3)" alt="Istanbul Coders">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="/images/dotnetliverpool01.jpg" style="width:100%" onclick="currentSlide(4)" alt=".NET Liverpool">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="/images/dotnetliverpool02.jpg" style="width:100%" onclick="currentSlide(5)" alt=".NET Liverpool">
-    </div>    
-    <div class="column">
-      <img class="demo cursor" src="/images/dotnetliverpool03.jpg" style="width:100%" onclick="currentSlide(6)" alt=".NET Liverpool">
-    </div>
-    
-       <div class="column">
-      <img class="demo cursor" src="/images/ljc01.jpg" style="width:100%" onclick="currentSlide(6)" alt="London Java Community">
-    </div>
-       <div class="column">
-      <img class="demo cursor" src="/images/ljc02.jpg" style="width:100%" onclick="currentSlide(6)" alt="London Java Community">
-    </div>
-       <div class="column">
-      <img class="demo cursor" src="/images/ljc03.jpg" style="width:100%" onclick="currentSlide(6)" alt="London Java Community">
-    </div>
-       <div class="column">
-      <img class="demo cursor" src="/images/ljc04.jpg" style="width:100%" onclick="currentSlide(6)" alt="London Java Community>
-    </div>
-  </div>
-</div>
-
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("demo");
-  let captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
-</script>
+<!-- Start WOWSlider.com BODY section -->
+<div id="wowslider-container1">
+<div class="ws_images"><ul>
+		<li><img src="/images/dotnetliverpool01.jpg" alt="dotnetliverpool01" title="dotnetliverpool01" id="wows1_0"/></li>
+		<li><img src="/images/dotnetliverpool02.jpg" alt="dotnetliverpool02" title="dotnetliverpool02" id="wows1_1"/></li>
+		<li><img src="/images/dotnetliverpool03.jpg" alt="dotnetliverpool03" title="dotnetliverpool03" id="wows1_2"/></li>
+		<li><img src="/images/istanbulcoders01.jpg" alt="istanbulcoders01" title="istanbulcoders01" id="wows1_3"/></li>
+		<li><img src="/images/istanbulcoders02.jpg" alt="istanbulcoders02" title="istanbulcoders02" id="wows1_4"/></li>
+		<li><img src="/images/istanbulcoders03.jpg" alt="istanbulcoders03" title="istanbulcoders03" id="wows1_5"/></li>
+		<li><img src="/images/ljc01.jpg" alt="ljc01" title="ljc01" id="wows1_6"/></li>
+		<li><img src="/images/ljc02.jpg" alt="ljc02" title="ljc02" id="wows1_7"/></li>
+		<li><img src="/images/ljc03.jpg" alt="jquery image carousel" title="ljc03" id="wows1_8"/></li>
+		<li><img src="/images/ljc04.jpg" alt="ljc04" title="ljc04" id="wows1_9"/></li>
+	</ul></div>
+	<div class="ws_bullets"><div>
+		<a href="#" title="dotnetliverpool01"><span><img src="/tooltips/dotnetliverpool01.jpg" alt="dotnetliverpool01"/>1</span></a>
+		<a href="#" title="dotnetliverpool02"><span><img src="/tooltips/dotnetliverpool02.jpg" alt="dotnetliverpool02"/>2</span></a>
+		<a href="#" title="dotnetliverpool03"><span><img src="/tooltips/dotnetliverpool03.jpg" alt="dotnetliverpool03"/>3</span></a>
+		<a href="#" title="istanbulcoders01"><span><img src="/tooltips/istanbulcoders01.jpg" alt="istanbulcoders01"/>4</span></a>
+		<a href="#" title="istanbulcoders02"><span><img src="/tooltips/istanbulcoders02.jpg" alt="istanbulcoders02"/>5</span></a>
+		<a href="#" title="istanbulcoders03"><span><img src="/tooltips/istanbulcoders03.jpg" alt="istanbulcoders03"/>6</span></a>
+		<a href="#" title="ljc01"><span><img src="/tooltips/ljc01.jpg" alt="ljc01"/>7</span></a>
+		<a href="#" title="ljc02"><span><img src="/tooltips/ljc02.jpg" alt="ljc02"/>8</span></a>
+		<a href="#" title="ljc03"><span><img src="/tooltips/ljc03.jpg" alt="ljc03"/>9</span></a>
+		<a href="#" title="ljc04"><span><img src="/tooltips/ljc04.jpg" alt="ljc04"/>10</span></a>
+	</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">jquery carousel</a> by WOWSlider.com v9.0m</div>
+<div class="ws_shadow"></div>
+</div>	
+<script type="text/javascript" src="engine1/wowslider.js"></script>
+<script type="text/javascript" src="engine1/script.js"></script>
+<!-- End WOWSlider.com BODY section -->
 </body>
 </html>
 
