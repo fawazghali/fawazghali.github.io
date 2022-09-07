@@ -15,44 +15,118 @@ title: Photos
 
   gtag('config', 'G-XFJ1ZHGZYC');
 </script>
-<!-- Start WOWSlider.com HEAD section -->
-<link rel="stylesheet" type="text/css" href="engine1/style.css" />
-<script type="text/javascript" src="engine1/jquery.js"></script>
-<!-- End WOWSlider.com HEAD section -->
-  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
-<!-- Start WOWSlider.com BODY section -->
-<div id="wowslider-container1">
-<div class="ws_images"><ul>
-		<li><img src="/images/dotnetliverpool01.jpg" alt="dotnetliverpool01" title="dotnetliverpool01" id="wows1_0"/></li>
-		<li><img src="/images/dotnetliverpool02.jpg" alt="dotnetliverpool02" title="dotnetliverpool02" id="wows1_1"/></li>
-		<li><img src="/images/dotnetliverpool03.jpg" alt="dotnetliverpool03" title="dotnetliverpool03" id="wows1_2"/></li>
-		<li><img src="/images/istanbulcoders01.jpg" alt="istanbulcoders01" title="istanbulcoders01" id="wows1_3"/></li>
-		<li><img src="/images/istanbulcoders02.jpg" alt="istanbulcoders02" title="istanbulcoders02" id="wows1_4"/></li>
-		<li><img src="/images/istanbulcoders03.jpg" alt="istanbulcoders03" title="istanbulcoders03" id="wows1_5"/></li>
-		<li><img src="/images/ljc01.jpg" alt="ljc01" title="ljc01" id="wows1_6"/></li>
-		<li><img src="/images/ljc02.jpg" alt="ljc02" title="ljc02" id="wows1_7"/></li>
-		<li><img src="/images/ljc03.jpg" alt="jquery image carousel" title="ljc03" id="wows1_8"/></li>
-		<li><img src="/images/ljc04.jpg" alt="ljc04" title="ljc04" id="wows1_9"/></li>
-	</ul></div>
-	<div class="ws_bullets"><div>
-		<a href="#" title="dotnetliverpool01"><span><img src="/tooltips/dotnetliverpool01.jpg" alt="dotnetliverpool01"/>1</span></a>
-		<a href="#" title="dotnetliverpool02"><span><img src="/tooltips/dotnetliverpool02.jpg" alt="dotnetliverpool02"/>2</span></a>
-		<a href="#" title="dotnetliverpool03"><span><img src="/tooltips/dotnetliverpool03.jpg" alt="dotnetliverpool03"/>3</span></a>
-		<a href="#" title="istanbulcoders01"><span><img src="/tooltips/istanbulcoders01.jpg" alt="istanbulcoders01"/>4</span></a>
-		<a href="#" title="istanbulcoders02"><span><img src="/tooltips/istanbulcoders02.jpg" alt="istanbulcoders02"/>5</span></a>
-		<a href="#" title="istanbulcoders03"><span><img src="/tooltips/istanbulcoders03.jpg" alt="istanbulcoders03"/>6</span></a>
-		<a href="#" title="ljc01"><span><img src="/tooltips/ljc01.jpg" alt="ljc01"/>7</span></a>
-		<a href="#" title="ljc02"><span><img src="/tooltips/ljc02.jpg" alt="ljc02"/>8</span></a>
-		<a href="#" title="ljc03"><span><img src="/tooltips/ljc03.jpg" alt="ljc03"/>9</span></a>
-		<a href="#" title="ljc04"><span><img src="/tooltips/ljc04.jpg" alt="ljc04"/>10</span></a>
-	</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">jquery carousel</a> by WOWSlider.com v9.0m</div>
-<div class="ws_shadow"></div>
-</div>	
-<script type="text/javascript" src="engine1/wowslider.js"></script>
-<script type="text/javascript" src="engine1/script.js"></script>
-<!-- End WOWSlider.com BODY section -->
+    
+<div class="row">
+  <div class="column">
+    <img src="/images/dotnetliverpool01.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="/images/dotnetliverpool02.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="/images/dotnetliverpool03.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <img src="/images/istanbulcoders01.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="/images/istanbulcoders02.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="/images/istanbulcoders03.jp" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <img src="/images/ljc01.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="/images/ljc02.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="/images/ljc03.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+  </div>
+</div>
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:100%">
+  <div id="imgtext"></div>
+</div>
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+
 </body>
 </html>
 
