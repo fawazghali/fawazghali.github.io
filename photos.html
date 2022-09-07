@@ -77,7 +77,11 @@ body {
 </style>
 </head>
 <body>
-    
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:100%">
+  <div id="imgtext"></div>
+</div>
 <div class="row">
   <div class="column">
     <img src="/images/dotnetliverpool01.jpg" alt="" style="width:100%" onclick="myFunction(this);">
@@ -94,10 +98,10 @@ body {
     <img src="/images/istanbulcoders01.jpg" alt="" style="width:100%" onclick="myFunction(this);">
   </div>
   <div class="column">
-    <img src="/images/istanbulcoders02.jpg" alt="" style="width:100%" onclick="myFunction(this);">
+    <img src="/images/istanbulcoders02.jpeg" alt="" style="width:100%" onclick="myFunction(this);">
   </div>
   <div class="column">
-    <img src="/images/istanbulcoders03.jp" alt="" style="width:100%" onclick="myFunction(this);">
+    <img src="/images/istanbulcoders03.jpeg" alt="" style="width:100%" onclick="myFunction(this);">
   </div>
 </div>
 <div class="row">
@@ -111,11 +115,7 @@ body {
     <img src="/images/ljc03.jpg" alt="" style="width:100%" onclick="myFunction(this);">
   </div>
 </div>
-<div class="container">
-  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-  <img id="expandedImg" style="width:100%">
-  <div id="imgtext"></div>
-</div>
+
 
 <script>
 function myFunction(imgs) {
