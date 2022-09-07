@@ -37,10 +37,14 @@ tr:nth-child(even) {
 <body>
 
 
-
-<table>
-
+{% assign total = 0 %}
+    {% for post in site.posts %}
+          {% assign total = total | plus: 1 %}
+     {% endfor %}
   {% for post in site.posts %}
+    <b>{{total}}</b> talks in 2022<br>
+<table>
+    
    <tr>
     <td> <a href="{{ post.url }}">{{ post.title }}</a><BR>
     {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}</td>
