@@ -15,23 +15,6 @@ title: Talks
 
   gtag('config', 'G-XFJ1ZHGZYC');
 </script>
-<style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-  
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
   
 </head>
 <body>
@@ -39,14 +22,14 @@ tr:nth-child(even) {
 
 
 <table>
-
+<ol>
   {% for post in site.posts %}
-   <tr>
+   <li>
     <td> <a href="{{ post.url }}">{{ post.title }}</a>: {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}</td>
-  </tr>  
+  </li>  
   {% endfor %}
   
-</table>
+</ol> 
 
 </body>
 </html>
