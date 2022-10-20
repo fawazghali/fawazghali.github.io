@@ -16,122 +16,97 @@ title: Photos
   gtag('config', 'G-XFJ1ZHGZYC');
 </script>
 <style>
-* {
-  box-sizing: border-box;
+#gallery {
+   line-height:0;
+   -webkit-column-count:5; /* split it into 5 columns */
+   -webkit-column-gap:5px; /* give it a 5px gap between columns */
+   -moz-column-count:5;
+   -moz-column-gap:5px;
+   column-count:5;
+   column-gap:5px;
 }
+#gallery img {
+   width: 100% !important;
+   height: auto !important;
+   margin-bottom:5px; /* to match column gap */
+    filter: grayscale(100%);
+    transition: filter 2s;
 
-body {
-  margin: 0;
-  font-family: Arial;
+
 }
-
-.header {
-  text-align: center;
-  padding: 32px;
+   
+#gallery img:hover {
+   filter:none;
 }
-
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
+@media (max-width: 1200px) {
+   #gallery {
+    -moz-column-count:    4;
+    -webkit-column-count: 4;
+    column-count:         4;
+   }
 }
-
-/* Create four equal columns that sits next to each other */
-.column {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
+@media (max-width: 1000px) {
+   #gallery {
+    -moz-column-count:    3;
+    -webkit-column-count: 3;
+    column-count:         3;
+   }
 }
-
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
+    @media (max-width: 800px) {
+   #gallery {
+    -moz-column-count:    2;
+    -webkit-column-count: 2;
+    column-count:         2;
+   }
 }
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
+    @media (max-width: 400px) {
+   #gallery {
+    -moz-column-count:    1;
+    -webkit-column-count: 1;
+    column-count:         1;
+   }
 }
 </style>  
 
 </head>
 <body>
-<BR>   
-<BR>   
-<style>
-    img {
-    float: center;
-    width:  100px;
-    height: 200px;
-    object-fit: cover;
-}
-</style>
-<div class="row"> 
-    
-    <div class="column">
+ 
+    <div id="gallery">
+
+    <img src="/images/MLW03.jpeg" >
     <img src="/images/MLW01.jpeg" >
+    <img src="/images/MLW04.jpeg" >
+
+    <img src="/images/MLW02.jpeg" >
+    <img src="/images/Machine Learning Week 01.jpeg" >
+    <img src="/images/Machine Learning Week 02.jpeg" >
+   
     <img src="/images/BigDateLondon01.jpeg" >
     <img src="/images/BigDateLondon02.jpeg" >
     <img src="/images/BigDateLondon03.jpeg" >
-        <img src="/images/WrocławJug03.jpeg" >
-    
-  </div>
-    
-  <div class="column">
-          <img src="/images/MLW02.jpeg" >
+    <img src="/images/WrocławJug03.jpeg" >
+
+        
 
     <img src="/images/dotnetliverpool01.jpg" >
     <img src="/images/dotnetliverpool02.jpg" >
     <img src="/images/dotnetliverpool03.jpg">
-      <img src="/images/WrocławJug02.jpeg" >
-    
-  </div>
-  <div class="column">
-          <img src="/images/MLW03.jpeg" >
+    <img src="/images/WrocławJug02.jpeg" >
+
 
     <img src="/images/istanbulcoders01.jpg" >
     <img src="/images/istanbulcoders02.jpeg" >
     <img src="/images/istanbulcoders03.jpeg" >
-     <img src="/images/WrocławJug01.jpeg" >
-  </div>  
-  <div class="column">
-          <img src="/images/MLW04.jpeg" >
+    <img src="/images/WrocławJug01.jpeg" >
+
+       
 
     <img src="/images/ljc01.jpg" >
     <img src="/images/ljc02.jpg" >
     <img src="/images/ljc03.jpg" >
-        <img src="/images/Machine Learning Week 01.jpeg" >
-        <img src="/images/Machine Learning Week 02.jpeg" >
-   
-  </div>
-    <div class="column">
-  
-    
-    
-   
-  </div>
-    
-    
+        
  
-</div>
-
+    </div>
 
 
 
