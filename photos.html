@@ -15,65 +15,16 @@ title: Photos
 
   gtag('config', 'G-XFJ1ZHGZYC');
 </script>
-<style>
-#gallery {
-   line-height:0;
-   -webkit-column-count:5; /* split it into 5 columns */
-   -webkit-column-gap:5px; /* give it a 5px gap between columns */
-   -moz-column-count:5;
-   -moz-column-gap:5px;
-   column-count:5;
-   column-gap:5px;
-}
-#gallery img {
-   width: 100% !important;
-   height: auto !important;
-   margin-bottom:5px; /* to match column gap */
-    filter: grayscale(100%);
-    transition: filter 2s;
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-
-}
-   
-#gallery img:hover {
-   filter:none;
-}
-@media (max-width: 1200px) {
-   #gallery {
-    -moz-column-count:    4;
-    -webkit-column-count: 4;
-    column-count:         4;
-   }
-}
-@media (max-width: 1000px) {
-   #gallery {
-    -moz-column-count:    3;
-    -webkit-column-count: 3;
-    column-count:         3;
-   }
-}
-    @media (max-width: 800px) {
-   #gallery {
-    -moz-column-count:    2;
-    -webkit-column-count: 2;
-    column-count:         2;
-   }
-}
-    @media (max-width: 400px) {
-   #gallery {
-    -moz-column-count:    1;
-    -webkit-column-count: 1;
-    column-count:         1;
-   }
-}
-</style>  
 
 </head>
 <body>
- 
-    <div id="gallery">
+    
 
-    <img src="/images/MLW03.jpeg" >
+<div class="w3-content w3-display-container">
+    
+ <img src="/images/MLW03.jpeg" >
     <img src="/images/MLW01.jpeg" >
     <img src="/images/MLW04.jpeg" >
 
@@ -105,10 +56,32 @@ title: Photos
     <img src="/images/ljc02.jpg" >
     <img src="/images/ljc03.jpg" >
         
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
  
-    </div>
-
-
+ 
 
 </body>
 </html>
