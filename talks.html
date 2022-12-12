@@ -20,12 +20,13 @@ title: Talks
 <body>
 
 
-
+If you're interested in me speaking at your event/conference, please email me at <a href="mailto:fawaz.ghali@hazelcast.com"> fawaz.ghali@hazelcast.com </a><BR>
 <table>
 <ol>
   {% for post in site.posts %}
    <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>: {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}
+    <a href="{{ post.url }}">{{ post.title }}</a><BR>
+      {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}
   </li>  
   {% endfor %}
   
