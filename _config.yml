@@ -11,11 +11,11 @@ future: true
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  Home: "https://fawazghali.com"
-  Talks: "talks"
-  Photos: "photos"
+ # Home: "https://fawazghali.com"
+#  Talks: "talks"
+#  Photos: "photos"
  
-  About: "aboutme"
+#  About: "aboutme"
   
 # --- Logo --- #
 
