@@ -25,55 +25,28 @@ subtitle: Principal Developer Advocate at Hazelcast, PhD in Computer Science
 
     
 <div style="text-align: justify">
-With 20+ years of experience in AI and Machine Learning, both industry and academia, my roles varied from a Software Developer, Lead Applications Developer, IT Consultant, Research Staff and Senior Lecturer. One element that stayed constant in my previous jobs is <b>Public Speaking</b> and <i>“getting tech stuff explained with ease”</i>.
-</div>
-<BR><BR>
-<div class="w3-content w3-display-container">
-    
-  <img class="mySlides" src="assets/img/Blipz_Fawaz_Ghali.jpeg" style="width:100%">
-    <img class="mySlides" src="assets/img/Turkey_Java_Community.png" style="width:100%">
-    <img class="mySlides" src="assets/img/Ghali_-_A_Systematic_Literature_Review_and_Meta-Analysis_of_Event_Streaming_in_Academia_357819.jpeg" style="width:100%">
-  <img class="mySlides" src="assets/img/londonjavacommunity.jpeg" style="width:100%">
-  <img class="mySlides" src="assets/img/fawaz_ghali_machine_learning_week.jpeg" style="width:100%">
-  <img class="mySlides" src="assets/img/hazelcast-istanbulcoders0.jpg" style="width:100%">
-<img class="mySlides" src="assets/img/fawaz_ghali_big_data_london.png" style="width:100%">
-   <img class="mySlides" src="assets/img/Ghali_-_Five_Challenges_in_Real-time_Stream_Processing_and_Five_Solutions_361464.jpeg" style="width:100%">
- 
-    
-    <img class="mySlides" src="assets/img/cloudweek2022.png" style="width:100%">
 
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-</div>
+If you're interested in me speaking at your event/conference, please email me at <a href="mailto:fawaz.ghali@hazelcast.com"> fawaz.ghali@hazelcast.com </a><BR>
+<BR>
+Fawaz Ghali is a Principal Developer Advocate at Hazelcast with 20+ years of experience in software development, machine learning and real-time intelligent applications. He holds a PhD in Computer Science and has worked in the private sector as well as Academia as a Researcher and Senior Lecturer. He has published over 46 scientific papers in the fields of machine learning and data science. His strengths and skills lie within the fields of low latency applications, IoT & Edge, distributed systems and cloud technologies.
+<BR>
+ <B>Fun fact: </B> I enjoy taking up challanges, no matter how big or small. I'm a sub 3 Marathoner. I ran 30 Marathons in 30 Days to support Alzheimer’s Research UK.
+ </div>
 
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>
- 
-
-<BR><BR>
 
 
 
 <div style="text-align: justify">
-I love creating content, delivering it through presentations, demos, talks and raising awareness. I’m passionate about helping developers' communities in getting the most out of their software tools and applications. I share my content on my social media links below. If you want to reach out, you can email me directly at <a href="mailto:fawaz.ghali@hazelcast.com"> fawaz.ghali@hazelcast.com </a>
-</div>
+<ol>
+  {% for post in site.posts %}
+   <li>
+    <a href="{{ post.url }}">{{ post.title }}</a><BR>
+     <i> {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}</i>
+  </li>  
+  {% endfor %}
+  
+</ol> </div>
 
 </body>
 </html>
