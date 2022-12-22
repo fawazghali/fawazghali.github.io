@@ -27,11 +27,11 @@ layout: page
   {% for post in site.posts %}
    <li>
     <a href="{{ post.url }}">{{ post.title }}</a><BR>
-     {% if post.date > date %}
+     {% if post.date > 'now' %}
 
      <i> {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}</i>
      {% else %}
-            <i> {{ post.location}}, {{ post.host}}}</i>
+            <i> {{ post.location}}, {{ post.host}}</i>
 
        {% endif %}
 
