@@ -24,7 +24,7 @@ navbar-links:
 avatar: "/assets/img/fawaz_ghali.jpg"
 
 # By default, the image is cut into a circle. You can disable this behaviour by setting 'round-avatar: false'
-round-avatar: false
+round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
@@ -90,7 +90,7 @@ feed_show_excerpt: false
 feed_show_tags: false
 
 # Add a search button to the navbar
-post_search: true
+post_search: false
 
 # The keywords to associate with your website, for SEO purposes
 #keywords: "FawazGhali, Fawaz Ghali, Hazelcast, Developer Advocate, Real-time, machine learning"
