@@ -27,7 +27,14 @@ layout: page
   {% for post in site.posts %}
    <li>
     <a href="{{ post.url }}">{{ post.title }}</a><BR>
+     {% if post.date > date %}
+
      <i> {{ post.location}}, {{ post.host}}, {{ post.date | date_to_long_string }}</i>
+     {% else %}
+            <i> {{ post.location}}, {{ post.host}}}</i>
+
+       {% endif %}
+
   </li>  
   {% endfor %}
   
