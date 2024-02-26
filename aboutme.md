@@ -1,16 +1,39 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
 ---
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Machine Learning, Real-time stream processing, Hazelcast, low latency applications, IoT & Edge, distributed systems, cloud technologies">
 
-My name is Inigo Montoya. I have the following qualities:
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFJ1ZHGZYC"></script>
+    
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+  gtag('config', 'G-XFJ1ZHGZYC');
+</script>
+</head>
+<body>
 
-What else do you need?
+    <p align="justify">
 
-### My story
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+   <B>Principal Data Science Architect and the Head of Developer Relations at Hazelcast</B> <BR> <BR>
+
+With over 22 years of Hands-on experience in applied data science, applied machine learning, and cloud computing, I am a passionate and visionary leader who drives innovation and excellence in developer relations, applied data science and applied machine learning initiatives to deliver high-quality end-to-end products. 
+
+<BR><BR>I specialize in developing scalable data pipelines, selecting optimal technologies for storage and processing, and collaborating across teams to integrate innovative solutions. My leadership and managerial skills extend to effectively work with cross-functional teams, ensuring alignment with business objectives.
+
+<BR><BR>I hold a <B>PhD in Computer Science</B> and have published over scientific 45 papers on Google Scholar. I'm a renowned public speaking expert with +200 talks and presentations at global events and conferences. Effective communication is my strength, allowing me to convey complex technical concepts to non-technical stakeholders.
+
+
+    </p>
+  
+
+
+
+</body>
+</html>
