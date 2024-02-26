@@ -1,22 +1,6 @@
 ---
 layout: page
 ---
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="Machine Learning, Real-time stream processing, Hazelcast, low latency applications, IoT & Edge, distributed systems, cloud technologies">
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFJ1ZHGZYC"></script>
-    
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XFJ1ZHGZYC');
-</script>
-</head>
-<body>
 
     <p align="justify">
 
@@ -33,7 +17,3 @@ With over 22 years of Hands-on experience in applied data science, applied machi
     </p>
   
 
-
-
-</body>
-</html>
