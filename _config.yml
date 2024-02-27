@@ -18,11 +18,11 @@ author: Fawaz Ghali
 ###############################################
 
 navbar-links:
-  About Me: "aboutme"
+  Home: "https://www.fawazghali.com/"
   Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://www.fawazghali.com/"
+    - LinkedIn: "https://www.linkedin.com/in/fawazghali/"
+    - X: "https://twitter.com/FawazGhali"
+  About Me: "aboutme"
 
 ################
 # --- Logo --- #
