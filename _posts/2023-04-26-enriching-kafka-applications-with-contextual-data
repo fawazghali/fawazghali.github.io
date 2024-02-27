@@ -1,0 +1,386 @@
+---
+layout: post
+title: Real-Time Stream Processing With Hazelcast and StreamNative
+subtitle: In this article, readers will learn about real-time stream processing with Hazelcast and StreamNative in a shorter time, along with demonstrations and code.
+cover-img: /assets/img/kafka.jpeg
+thumbnail-img: /assets/img/kafka.jpeg
+share-img: /assets/img/kafka.jpeg
+tags: [ml, streamprocessing]
+author: Fawaz Ghali
+---
+
+
+
+<p>Developing high-performance large-stream processing applications is a challenging task. Choosing the right tool(s) is crucial to get the job done; as developers, we tend to focus on performance, simplicity, and cost. However, the cost becomes relatively high if we end up with two or more tools to do the same task. Simply put, you need to multiply development time, deployment time, and maintenance costs by the number of tools.&nbsp;</p>
+<p>Kafka is great for event streaming architectures, continuous data integration (ETL), and messaging systems of record (database). However, Kafka has some challenges, such as a complex architecture with many moving parts, it can&rsquo;t be embedded, and it&rsquo;s a centralized middleware, just like a database. Moreover, Kafka does not offer batch processing, and all intermediate steps are materialized to disk in Kafka. This leads to enormous disk space usage.&nbsp;</p>
+<p>Hazelcast is a real-time stream processing platform that can enhance Kafka (and many more sources). Hazelcast can address Kafka&rsquo;s challenges mentioned above by simplifying deployment and operations with ultra-low latency and a lightweight architecture making it a great tool for edge (restricted) environments. This blog post aims to take your Kafka applications to the next level. Hazelcast can process real-time and batch data in one platform and enriches your Kafka applications with &quot;context.&quot;</p>
+<h2>Prerequisites</h2>
+<ul>
+    <li>If you are new to Kafka or you&rsquo;re just getting started, I recommend you start with <a href="https://kafka.apache.org/documentation/" rel="noopener noreferrer" target="_blank">Kafka Documentation</a>.</li>
+    <li>If you are new to Hazelcast or you&rsquo;re just getting started, I recommend you start with <a href="https://docs.hazelcast.com/home/" rel="noopener noreferrer" target="_blank">Hazelcast Documentation</a>.</li>
+    <li>For Kafka, you need to download Kafka, start the environment, create a topic to store events, write some events to your topic, and finally read these events. Here&rsquo;s a <a href="https://kafka.apache.org/quickstart" rel="noopener noreferrer" target="_blank">Kafka Quick Start</a>.</li>
+    <li>For Hazelcast, you can use either the <a href="https://docs.hazelcast.com/hazelcast/latest/" rel="noopener noreferrer" target="_blank">Platform</a> or the <a href="https://docs.hazelcast.com/cloud/overview" rel="noopener noreferrer" target="_blank">Cloud</a>. I will use a local cluster.</li>
+</ul>
+<h2>Step 1</h2>
+<p>Start a Hazelcast local cluster:&nbsp;This will run a Hazelcast cluster in client/server mode and an instance of Management Center running on your local network.</p>
+<div class="codeMirror-wrapper" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader"><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="brew tap hazelcast/hz
+
+brew install hazelcast@5.2.3
+
+hz -V
+
+hz start " data-lang=""><pre><code lang="">brew tap hazelcast/hz
+
+brew install hazelcast@5.2.3
+
+hz -V
+
+hz start </code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>To add more members to your cluster, open another terminal window and rerun the start command.&nbsp;</p>
+<p><strong>Optional</strong>: The Management Center is a user interface for managing and monitoring your cluster. It is a handy tool that you can use to check clusters/nodes, memory, and jobs.</p>
+<div class="codeMirror-wrapper" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader"><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="brew tap hazelcast/hz
+
+brew install hazelcast-management-center@5.2.3
+
+hz-mc -V
+
+hz-mc start" data-lang=""><pre><code lang="">brew tap hazelcast/hz
+
+brew install hazelcast-management-center@5.2.3
+
+hz-mc -V
+
+hz-mc start</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>We will use the SQL shell, the easiest way to run SQL queries on a cluster. You can use SQL to query data in maps and Kafka topics. The results can be sent directly to the client or inserted into maps or Kafka topics. You can do so by running the following command:</p>
+<div class="codeMirror-wrapper" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader"><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="bin/hz-cli sql" data-lang=""><pre><code lang="">bin/hz-cli sql</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>We need a Kafka Broker. I&rsquo;m using a Docker image to run it (on the same cluster/device as my Hazelcast member).</p>
+<div class="codeMirror-wrapper" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader"><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="docker run --name kafka --network hazelcast-network --rm hazelcast/hazelcast-quickstart-kafka" data-lang=""><pre><code lang="">docker run --name kafka --network hazelcast-network --rm hazelcast/hazelcast-quickstart-kafka</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<h2>Step 2</h2>
+<p>Once we have all components up and running, we need to create a Kafka mapping to allow Hazelcast to access messages in the trades topic.</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="CREATE MAPPING trades (
+
+    id BIGINT,
+
+    ticker VARCHAR,
+
+    price DECIMAL,
+
+    amount BIGINT)
+
+TYPE Kafka
+
+OPTIONS (
+
+    'valueFormat' = 'json-flat',
+
+    'bootstrap.servers' = '127.0.0.1:9092'
+
+);" data-lang="text/x-sql"><pre><code lang="text/x-sql">CREATE MAPPING trades (
+
+    id BIGINT,
+
+    ticker VARCHAR,
+
+    price DECIMAL,
+
+    amount BIGINT)
+
+TYPE Kafka
+
+OPTIONS (
+
+    &#39;valueFormat&#39; = &#39;json-flat&#39;,
+
+    &#39;bootstrap.servers&#39; = &#39;127.0.0.1:9092&#39;
+
+);</code></pre></div></div></div>
+<p>&nbsp;</p>
+<p>Here, you configure the connector to read JSON values with the following fields:</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">JSON</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code='{
+
+  "id"
+
+  "ticker"
+
+  "price"
+
+  "amount"
+
+}' data-lang="application/json"><pre><code lang="application/json">{
+
+  &quot;id&quot;
+
+  &quot;ticker&quot;
+
+  &quot;price&quot;
+
+  &quot;amount&quot;
+
+}</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>You can write a streaming query to filter messages from Kafka:</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="SELECT ticker, ROUND(price * 100) AS price_cents, amount
+
+  FROM trades
+
+  WHERE price * amount > 100;" data-lang="text/x-sql"><pre><code lang="text/x-sql">SELECT ticker, ROUND(price * 100) AS price_cents, amount
+
+  FROM trades
+
+  WHERE price * amount &gt; 100;</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>This will return an empty table, we need to insert some data:</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="INSERT INTO trades VALUES
+
+  (1, 'ABCD', 5.5, 10),
+
+  (2, 'EFGH', 14, 20);" data-lang="text/x-sql"><pre><code lang="text/x-sql">INSERT INTO trades VALUES
+
+  (1, &#39;ABCD&#39;, 5.5, 10),
+
+  (2, &#39;EFGH&#39;, 14, 20);</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>Go back to the terminal where you created the streaming query. You should see that Hazelcast has executed the query and filtered the results.</p>
+<h2>Step 3</h2>
+<p>While the previous step is possible to execute with Kafka only, this step will enrich the data in the Kafka message, taking your Kafka processing to the next step. Kafka messages are often small and contain minimal data to reduce network latency. For example, the <code>trades</code> topic does not contain any information about the company that&rsquo;s associated with a given ticker. To get deeper insights from data in Kafka topics, you can join query results with data in other mappings. In order to do this, we need to create a mapping to a new map in which to store the company information that you&rsquo;ll use to enrich results from the trades topic. Then we need to add some entries to the companies map.</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="CREATE MAPPING companies (
+
+__key BIGINT,
+
+ticker VARCHAR,
+
+company VARCHAR,
+
+marketcap BIGINT)
+
+TYPE IMap
+
+OPTIONS (
+
+'keyFormat'='bigint',
+
+'valueFormat'='json-flat');
+
+ 
+
+INSERT INTO companies VALUES
+
+(1, 'ABCD', 'The ABCD', 100000),
+
+(2, 'EFGH', 'The EFGH', 5000000);" data-lang="text/x-sql"><pre><code lang="text/x-sql">CREATE MAPPING companies (
+
+__key BIGINT,
+
+ticker VARCHAR,
+
+company VARCHAR,
+
+marketcap BIGINT)
+
+TYPE IMap
+
+OPTIONS (
+
+&#39;keyFormat&#39;=&#39;bigint&#39;,
+
+&#39;valueFormat&#39;=&#39;json-flat&#39;);
+
+ 
+
+INSERT INTO companies VALUES
+
+(1, &#39;ABCD&#39;, &#39;The ABCD&#39;, 100000),
+
+(2, &#39;EFGH&#39;, &#39;The EFGH&#39;, 5000000);</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>Use the <code>JOIN</code> clause to merge results from the companies map and trades topic so you can see which companies are being traded.</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="SELECT trades.ticker, companies.company, trades.amount
+
+FROM trades
+
+JOIN companies
+
+ON companies.ticker = trades.ticker;" data-lang="text/x-sql"><pre><code lang="text/x-sql">SELECT trades.ticker, companies.company, trades.amount
+
+FROM trades
+
+JOIN companies
+
+ON companies.ticker = trades.ticker;</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>In another SQL shell, publish some messages to the&nbsp;trades&nbsp;topic.</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="INSERT INTO trades VALUES
+
+  (1, 'ABCD', 5.5, 10),
+
+  (2, 'EFGH', 14, 20);" data-lang="text/x-sql"><pre><code lang="text/x-sql">INSERT INTO trades VALUES
+
+  (1, &#39;ABCD&#39;, 5.5, 10),
+
+  (2, &#39;EFGH&#39;, 14, 20);</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>Go back to the terminal where you created the streaming query that merges results from the companies map and trades topic.</p>
+<h2>Step 4</h2>
+<p>Finally, we will ingest query results into a Hazelcast map. We create a mapping to a new map in which to ingest your streaming query results.</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="CREATE MAPPING trade_map (
+
+__key BIGINT,
+
+ticker VARCHAR,
+
+company VARCHAR,
+
+amount BIGINT)
+
+TYPE IMap
+
+OPTIONS (
+
+'keyFormat'='bigint',
+
+'valueFormat'='json-flat');" data-lang="text/x-sql"><pre><code lang="text/x-sql">CREATE MAPPING trade_map (
+
+__key BIGINT,
+
+ticker VARCHAR,
+
+company VARCHAR,
+
+amount BIGINT)
+
+TYPE IMap
+
+OPTIONS (
+
+&#39;keyFormat&#39;=&#39;bigint&#39;,
+
+&#39;valueFormat&#39;=&#39;json-flat&#39;);</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>Submit a streaming job to your cluster that will monitor your trade topic for changes and store them in a map. You can check running jobs by running SHOW JOBS:</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code="CREATE JOB ingest_trades AS
+
+SINK INTO trade_map
+
+SELECT trades.id, trades.ticker, companies.company, trades.amount
+
+FROM trades
+
+JOIN companies
+
+ON companies.ticker = trades.ticker;
+
+ 
+
+INSERT INTO trades VALUES
+
+(1, 'ABCD', 5.5, 10),
+
+(2, 'EFGH', 14, 20);" data-lang="text/x-sql"><pre><code lang="text/x-sql">CREATE JOB ingest_trades AS
+
+SINK INTO trade_map
+
+SELECT trades.id, trades.ticker, companies.company, trades.amount
+
+FROM trades
+
+JOIN companies
+
+ON companies.ticker = trades.ticker;
+
+ 
+
+INSERT INTO trades VALUES
+
+(1, &#39;ABCD&#39;, 5.5, 10),
+
+(2, &#39;EFGH&#39;, 14, 20);</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>&nbsp;Now you can query your <code>trade_map</code> map to see that the Kafka messages have been added to it.</p>
+<div class="codeMirror-wrapper newest" contenteditable="false">
+    <div contenteditable="false">
+        <div class="codeHeader">
+            <div class="nameLanguage">SQL</div><i class="icon-cancel-circled-1 cm-remove">&nbsp;</i></div>
+        <div class="codeMirror-code--wrapper" data-code=" SELECT * FROM trade_map;" data-lang="text/x-sql"><pre><code lang="text/x-sql"> SELECT * FROM trade_map;</code></pre></div></div></div>
+<p>
+    <br>
+</p>
+<p>The following diagram explains our demo setup. We have a Kafka topic called <code>trades</code> which contains a collection of trades that will be ingested into a Hazelcast cluster. Additionally, a <code>companies</code> map represents companies&rsquo; data stored in the Hazelcast cluster. We create a new map by aggregating trades and companies into the <code>ingest_trades</code> map. We used SQL, but you can send results to a web server/client.</p>
+<p><img alt="Hazelcast demo setup" width="1926" height="796" class="fr-fic fr-dib lazyload" data-image="true" data-new="false" data-sizeformatted="118.0 kB" data-mimetype="image/png" data-creationdate="1683707204192" data-creationdateformatted="05/10/2023 08:26 AM" data-type="temp" data-url="https://dz2cdn1.dzone.com/storage/temp/16890311-1683707203791.png" data-modificationdate="null" data-size="118014" data-name="1683707203791.png" data-id="16890311" data-src="https://dz2cdn1.dzone.com/storage/temp/16890311-1683707203791.png"></p>
+<h2>Summary</h2>
+<p>So here you have it! Hazelcast can be used to enrich Kafka applications with contextual data. This can be done programmatically, using the command line, or through SQL as demonstrated in this blog post. Hazelcast can process real-time data and batch data in one platform, making it a great platform to use with Kafka applications by providing &ldquo;context&rdquo; to your Kafka applications. We are looking forward to your feedback and comments about this blog post. Don&rsquo;t hesitate to share your experience with us in our community <a href="https://github.com/hazelcast" rel="noopener noreferrer" target="_blank">GitHub</a> repository.</p>
