@@ -53,5 +53,3 @@ try {
     e.printStackTrace();
 }
 
-
-2. Verify your code again (repeat Step 3). This time the client continues to write map entries after it connects to the secondary cluster.
