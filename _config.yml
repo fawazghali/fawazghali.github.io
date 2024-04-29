@@ -17,12 +17,6 @@ author: Fawaz Ghali
 # --- List of links in the navigation bar --- #
 ###############################################
 
-navbar-links:
-  Home: "https://www.fawazghali.com/"
-  Resources:
-    - LinkedIn: "https://www.linkedin.com/in/fawazghali/"
-    - X: "https://twitter.com/FawazGhali"
-  About Me: "aboutme"
 
 ################
 # --- Logo --- #
