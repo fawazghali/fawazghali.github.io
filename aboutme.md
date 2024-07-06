@@ -1,12 +1,13 @@
 ---
 layout: page
 ---
-I'm currently a <B>Principal Data Science Architect and the Head of Developer Relations at Hazelcast</B> <BR>
-
-With over 22 years of Hands-on experience in applied data science, applied machine learning, and cloud computing, I am a passionate and visionary leader who drives innovation and excellence in developer relations, applied data science and applied machine learning initiatives to deliver high-quality end-to-end products. 
-I specialize in developing scalable data pipelines, selecting optimal technologies for storage and processing, and collaborating across teams to integrate innovative solutions. My leadership and managerial skills extend to effectively work with cross-functional teams, ensuring alignment with business objectives. I hold a <B>PhD in Computer Science</B> and have published over scientific 45 papers on Google Scholar. I'm a renowned public speaking expert with +200 talks and presentations at global events and conferences. Effective communication is my strength, allowing me to convey complex technical concepts to non-technical stakeholders.
 
 
+Fawaz Ghali, PhD.
+--
 
-  
+At Hazelcast, my role as Director of Developer Experience Engineering involves leading the engineering teams of the APIs, client interfaces, and integration tools. My proficiency in Agile methodologies and IT project management has been instrumental in driving projects that ensure developer satisfaction and seamless product integration.
 
+I prioritize innovative software solutions that align with strategic business objectives, fostering a culture of continuous improvement. My technical acumen, coupled with a strategic mindset, ensures that I deliver robust software solutions that cater to developers needs and advance the industry standard.
+
+With a PhD in Computer Science, 25+ years of experience, 45+ papers on Google Scholar and 200+ talks, my soft skills include excellent communication, strong problem-solving abilities, adaptability to evolving technologies and business environments, and conflict resolution.
