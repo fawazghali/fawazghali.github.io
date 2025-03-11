@@ -34,8 +34,8 @@ This GitHub is dedicated to **demos, tutorials, quick starts, guides, and open-s
 📢 I am actively involved in **developer meetups, hackathons, and global conferences**. Stay updated on upcoming events and opportunities to connect!  
 
 🔗 **Follow my updates on:**  
-- **Twitter/X:** [@FawazGhali](#)  
-- **LinkedIn:** [linkedin.com/in/fawazghali](#)  
-- **Website/Blog:** [fawazghali.com](#)  
+- **Twitter/X:** [@FawazGhali](https://x.com/FawazGhali)  
+- **LinkedIn:** [linkedin.com/in/fawazghali](linkedin.com/in/fawazghali)  
+- **Website/Blog:** [fawazghali.com](https://www.fawazghali.com/)  
 
 💡 **Want to collaborate?** Feel free to open an issue or reach out! Let's build together. 🚀
