@@ -1,9 +1,44 @@
 ---
-layout: page
+layout: home
 ---
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Machine Learning, Real-time stream processing, Hazelcast, low latency applications, IoT & Edge, distributed systems, cloud technologies">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFJ1ZHGZYC"></script>
+    
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-Fawaz Ghali, PhD.
---
+  gtag('config', 'G-XFJ1ZHGZYC');
+</script>
+</head>
+<body>
+   <p align="justify">
+<h1 id="-fawaz-ghali-"><strong>Fawaz Ghali</strong></h1>
+<p>🚀 <strong>Lead Developer Advocate - EMEA | Snowflake</strong><br>📍 London, United Kingdom<br>🎤 <strong>AI | Data Engineering | Open Source | Developer Relations</strong>  </p>
+<hr>
+<h2 id="-about-me-"><strong>👨‍💻 About Me</strong></h2>
+<p>I am a technologist passionate about <strong>AI, Data Engineering, Open Source, and Developer Relations</strong>, dedicated to driving <strong>community-driven innovation</strong>. I create technical content, deliver talks, and engage with developer communities to foster the adoption of modern technologies.  </p>
+<p>With <strong>20+ years of experience</strong> and a <strong>PhD in Computer Science</strong>, I have:<br>✔ <strong>Published 45+ peer-reviewed papers</strong><br>✔ <strong>Delivered 200+ talks worldwide</strong><br>✔ <strong>Authored multiple books and reports</strong><br>✔ <strong>Empowered developers and data engineers through collaboration</strong>  </p>
+<hr>
+<h2 id="-what-you-ll-find-here-"><strong>🚀 What You&#39;ll Find Here</strong></h2>
+<p>This GitHub is dedicated to <strong>demos, tutorials, quick starts, guides, and open-source projects</strong>, as well as fostering <strong>community engagement through events and meetups</strong>.  </p>
+<p>📌 <strong>Key Focus Areas:</strong><br>✅ <strong>Snowflake</strong> – Best practices, integrations, and real-world implementations<br>✅ <strong>AI &amp; Data Engineering</strong> – Hands-on projects and architecture deep dives<br>✅ <strong>Open Source Contributions</strong> – Libraries, tools, and frameworks<br>✅ <strong>Developer Community &amp; Events</strong> – Meetups, workshops &amp; collaborations<br>✅ <strong>Technical Tutorials &amp; Blog Posts</strong> – Hands-on guides for developers<br>✅ <strong>Demos, Quick Starts &amp; Guides</strong> – Fast-track learning resources for developers  </p>
+<hr>
+<h2 id="-community-events-"><strong>📅 Community &amp; Events</strong></h2>
+<p>📢 I am actively involved in <strong>developer meetups, hackathons, and global conferences</strong>. Stay updated on upcoming events and opportunities to connect!  </p>
+<p>🔗 <strong>Follow my updates on:</strong>  </p>
+<ul>
+<li><strong>Twitter/X:</strong> <a href="https://x.com/FawazGhali">@FawazGhali</a>  </li>
+<li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/fawazghali">linkedin.com/in/fawazghali</a>  </li>
+<li><strong>Website/Blog:</strong> <a href="https://www.fawazghali.com/">fawazghali.com</a>  </li>
+</ul>
+<p>💡 <strong>Want to collaborate?</strong> Feel free to open an issue or reach out! Let&#39;s build together. 🚀</p>
 
-Fawaz Ghali is a public speaker, author, and expert with 25+ years in DevX, DevRel, AI/ML, and Data Engineering. He holds a PhD in Computer Science, has published 45+ peer-reviewed papers, and delivered 200+ talks at global conferences.
+   </p>
+</body>
+</html>
