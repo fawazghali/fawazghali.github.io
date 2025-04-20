@@ -1,6 +1,5 @@
 # **Fawaz Ghali**
-
-🚀 **Lead Developer Advocate - EMEA | Snowflake**  
+ 
 📍 London, United Kingdom  
 🎤 **AI | Data Engineering | Open Source | Developer Relations**  
 
